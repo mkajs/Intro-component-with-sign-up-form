@@ -1,0 +1,250 @@
+/// Variables
+
+/// Primary
+
+$Red: hsl(0, 100%, 74%);
+$Green: hsl(154, 59%, 51%);
+
+/// Accent
+
+$Blue: hsl(248, 32%, 49%);
+
+/// Neutral
+
+$Dark-Blue: hsl(249, 10%, 26%);
+$Grayish-Blue: hsl(246, 25%, 77%);
+
+//////////////////////////////////////////////////////////////
+///Responsive function
+@mixin respond($breakpoint) {
+  @if $breakpoint == desktop {
+    @media only screen and (min-width: 56.25em) {
+      @content;
+    } //900px
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+/// Resets
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  transition: all 0.3s;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 50%; // 1rem = 8px, 8px/16px = 50%
+
+  @include respond(desktop) {
+    //  600 < width?
+    font-size: 62.5%; //1 rem = 10px, 10/16 = 62.5%
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+/// Typography
+
+@font-face {
+  font-family: "iran-sans";
+  src: url("/src/fonts/IRANSansWeb.ttf");
+}
+@font-face {
+  font-family: "IRANSansWeb(FaNum)";
+  src: url("/src/fonts/IRANSansWeb\(FaNum\).ttf");
+}
+.fa-num {
+  font-family: "IRANSansWeb(FaNum)";
+}
+
+body {
+  font-family: "iran-sans", sans-serif;
+  color: $Grayish-Blue;
+
+  text-decoration: none;
+  font-size: 1.6rem;
+  line-height: 3rem;
+  font-weight: 500;
+}
+
+//////////main styles
+.container {
+  width: 33rem;
+  margin: 0 auto;
+  @include respond(desktop) {
+    width: auto;
+    max-width: 111rem;
+  }
+}
+
+.intro {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("images/bg-intro-mobile.png"),
+    linear-gradient(to right, $Red, $Red);
+
+  padding-top: 9rem;
+  text-align: center;
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    @include respond(desktop) {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 6.6rem;
+    }
+  }
+
+  &__header {
+    color: #fff;
+    @include respond(desktop) {
+      grid-column: 1/2;
+      grid-row: 1 / span 2;
+      align-self: center;
+      text-align: start;
+    }
+
+    h3 {
+      font-weight: 700;
+      font-size: 3.6rem;
+      line-height: 5rem;
+      margin-bottom: 2rem;
+      @include respond(desktop) {
+        font-size: 4.8rem;
+        line-height: 8rem;
+        margin-bottom: 4rem;
+      }
+    }
+
+    p {
+      margin-bottom: 5rem;
+    }
+  }
+  &__banner {
+    display: inline-block;
+    color: $Grayish-Blue;
+    width: 100%;
+    height: 8.5rem;
+    border-radius: 1rem;
+    padding: 2rem 6rem;
+    background-color: $Blue;
+    box-shadow: 0 1rem 0 rgba($color: #000000, $alpha: 0.1);
+    margin-bottom: 3rem;
+    font-size: 1.4rem;
+    line-height: 2.5rem;
+    @include respond(desktop) {
+      grid-column: 2/3;
+    }
+
+    strong {
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    box-shadow: 0 1rem 0 rgba($color: #000000, $alpha: 0.1);
+    margin-bottom: 5rem;
+    @include respond(desktop) {
+      grid-column: 2/3;
+    }
+
+    & div {
+      width: 100%;
+    }
+    input {
+      width: 100%;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid $Grayish-Blue;
+      font-weight: 600;
+      color: $Dark-Blue;
+      font-family: "iran-sans";
+      &:focus {
+        border: 1px solid $Dark-Blue;
+      }
+    }
+
+    input#submit {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      background-color: $Green;
+      border: none;
+      border-bottom: 5px solid darken($Green, 5);
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(0.5rem);
+        background-color: lighten($Green, 10);
+      }
+    }
+    small {
+      width: 75%;
+      font-size: 1rem;
+      line-height: 2rem;
+      a {
+        font-weight: 700;
+        color: $Red;
+        cursor: pointer;
+      }
+    }
+  }
+  &__input-control {
+    width: 100%;
+    position: relative;
+    img {
+      position: absolute;
+      top: 1.5rem;
+      left: 2rem;
+      // transform: translateY(-50%);
+      display: none;
+      opacity: 0;
+    }
+
+    &-error-message {
+      display: none;
+      opacity: 0;
+    }
+
+    &--error {
+      input {
+        border: 1px solid $Red;
+        outline: none;
+        color: $Red;
+        &::placeholder {
+          color: $Red;
+        }
+        &:focus {
+          border: 1px solid $Red;
+        }
+      }
+      img {
+        display: inline-block;
+        opacity: 1;
+      }
+
+      & .intro__input-control-error-message {
+        display: block;
+        opacity: 1;
+        text-align: start;
+        font-size: 1.2rem;
+        color: $Red;
+      }
+    }
+  }
+}

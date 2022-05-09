@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="src/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="src/style.scss" />
+    <script type="module" src="src/script.js"></script>
+
+    <title>Frontend Mentor | Intro component with sign up form</title>
+  </head>
+  <body>
+    <section class="intro">
+      <div class="container">
+        <div class="intro__header">
+          <h3>با تماشای کار دیگران کدنویسی را یاد بگیرید</h3>
+          <p>
+            ببینید که چگونه توسعه دهندگان با تجربه مشکلات را در زمان واقعی حل می
+            کنند. تماشای آموزش های اسکریپت عالی است، اما درک اینکه توسعه دهندگان
+            چگونه فکر می کنند بسیار ارزشمند است.
+          </p>
+        </div>
+        <div class="intro__banner">
+          <strong>
+            <span class="fa-num">7</span>
+            روز رایگان آن را امتحان کنید </strong
+          ><br />بعد از آن سپس 20 هزار تومان در ماه.
+        </div>
+        <form class="intro__form">
+          <div class="intro__input-control">
+            <input
+              type="text"
+              name="firstName"
+              placeholder="نام"
+              id="firstName"
+            />
+            <img src="src/images/icon-error.svg" alt="error icon" />
+            <p class="intro__input-control-error-message">
+              نام نمی تواند خالی باشد.
+            </p>
+          </div>
+          <div class="intro__input-control">
+            <input
+              type="text"
+              name="lastName"
+              placeholder="نام خانوادگی"
+              id="lastName"
+            />
+            <img src="src/images/icon-error.svg" alt="error icon" />
+            <p class="intro__input-control-error-message">
+              نام خانوادگی نمی تواند خالی باشد.
+            </p>
+          </div>
+          <div class="intro__input-control">
+            <input
+              type="email"
+              name="email "
+              placeholder="آدرس ایمیل"
+              id="email"
+            />
+            <img src="src/images/icon-error.svg" alt="error icon" />
+            <p class="intro__input-control-error-message">ایمیل صحیح نیست</p>
+          </div>
+          <div class="intro__input-control">
+            <input
+              type="password"
+              name="password "
+              placeholder="کلمه عبور"
+              id="password"
+            />
+            <img src="src/images/icon-error.svg" alt="error icon" />
+            <p class="intro__input-control-error-message">
+              کلمه عبور نمی تواند خالی باشد.
+            </p>
+          </div>
+          <input
+            type="submit"
+            value="درخواست نسخه آزمایشی رایگان"
+            id="submit"
+          />
+          <small
+            >با کلیک بر روی دکمه، شما با <a href="#">شرایط و خدمات</a> ما موافقت
+            می کنید
+          </small>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
